@@ -10,12 +10,12 @@ function addItem() {
             "<li class='list-group-item d-flex justify-content-between lh-condensed element' id='elemento" + listIndex + "'>" +
             "<div><h6 class='my-0 description'>" + text + "</h6></div>" +
             "<div class='btn-group' role='group'>" +
-            "<button type='button' onclick='deleteItem(" + listIndex + ")' class='btn btn-secondary delete-button'>5</button>" +
-            "<button type='button' onclick='doneItem(" + listIndex + ")' class='btn btn-secondary done-button'>D</button>" +
+        "<button type='button' onclick='deleteItem(" + listIndex + ")' class='btn btn-secondary delete-button mr-2'>&#9888;</button>" +
+        "<button type='button' onclick='doneItem(" + listIndex + ")' class='btn btn-secondary done-button'>&#10004;</button>" +
             "</div>" +
             "</li>";
 
-        listIndex++
+        listIndex++;
     }
     Items.textContent = listIndex - 1;
 }
