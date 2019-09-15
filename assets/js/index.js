@@ -1,30 +1,31 @@
-const listaSuper = document.querySelector('.ul-principal');
-const doneButton = document.querySelector('.done-button');
-const deleteButton = document.querySelector('.delete-button');
-const addButton = document.querySelector('.add-button');
-const element = document.querySelector('.element');
-const productName = document.querySelector('.nameProduct');
-const descriptionelement = document.querySelector('.description');
+Items = document.querySelector('.items');
+let lista = document.getElementById("lista-articulos");
+let listIndex = 1;
 
-addButton.addEventListener('click',addElement);
-doneButton.addEventListener('click',doneElement);
-deleteButton.addEventListener('click',deleteElement);
+function addItem() {
+    let text = document.getElementById("input-producto").value;
+    if (text === "") return;
+    else {
+        lista.innerHTML +=
+            "<li class='list-group-item d-flex justify-content-between lh-condensed element' id='elemento" + listIndex + "'>" +
+            "<div><h6 class='my-0 description'>" + text + "</h6></div>" +
+            "<div class='btn-group' role='group'>" +
+            "<button type='button' onclick='deleteItem(" + listIndex + ")' class='btn btn-secondary delete-button'>5</button>" +
+            "<button type='button' onclick='doneItem(" + listIndex + ")' class='btn btn-secondary done-button'>D</button>" +
+            "</div>" +
+            "</li>";
 
-let elementName;
-
-
-
-function addElement(){
-    elementName = productName.value;
-    newElement = document.createElement(listaSuper.before(element.cloneNode()));
-    
-    listaSuper.appendChild(newElement);
-    //document.querySelector('.description').innerHTML = elementName;
+        listIndex++
+    }
+    Items.textContent = listIndex - 1;
 }
-function doneElement(){
-    element.innerHTML = "done";
+
+function deleteItem(index) {
+    document.getElementById("elemento" + index).remove();
 }
-function deleteElement(){
-    deleteElement = document.querySelector('.element');
-    deleteElement.remove();
+
+function doneItem(index) {
+    let element = document.getElementById("elemento" + index);
+    element.innerHTML = "<span>done<span>";
+    element.classList.add("bg-success");
 }
